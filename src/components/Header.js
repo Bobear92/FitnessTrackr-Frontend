@@ -4,6 +4,7 @@ import { getUser } from "../auth";
 
 const Header = ({ loggedIn, setLoggedIn }) => {
   const user = getUser();
+  console.log(loggedIn, "header 7");
   return (
     <div>
       {loggedIn ? (

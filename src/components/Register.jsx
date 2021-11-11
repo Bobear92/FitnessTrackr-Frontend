@@ -15,12 +15,10 @@ const Register = ({ setLoggedIn }) => {
           event.preventDefault();
 
           try {
-            const {
-              data: { token },
-            } = await registerUser(username, password);
+            const { token, user } = await registerUser(username, password);
 
             storeToken(token);
-            storeUser(username);
+            storeUser(user.username);
             setLoggedIn(true);
 
             setUsername("");

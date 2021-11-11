@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
+import axios from "axios";
+import { getToken } from "./auth";
 
 import {
   BrowserRouter as Router,
@@ -20,8 +22,7 @@ import {
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [currentUser, SetCurrentUser] = useState({});
-  // const [username, setUsername] = useState("");
+  console.log(loggedIn, "main index 25");
 
   function isUserLoggedIn() {
     const token = getToken();
@@ -32,9 +33,10 @@ const App = () => {
   }
 
   useEffect(async () => {
-    const data = await getCurrentUser();
-    SetCurrentUser(data.data);
+    isUserLoggedIn();
   }, []);
+
+  console.log(loggedIn, "main index 39");
 
   return (
     <Router>

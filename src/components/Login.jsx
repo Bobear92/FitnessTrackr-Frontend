@@ -14,18 +14,21 @@ const Login = ({ setLoggedIn }) => {
           event.preventDefault();
 
           try {
-            const {
-              data: { token },
-            } = await loginUser(username, password);
+            const { token, user } = await loginUser(username, password);
 
             storeToken(token);
-            storeUser(username);
+            storeUser(user.username);
             setLoggedIn(true);
 
             setUsername("");
             setPassword("");
-          } catch (error) {
-            console.log(error);
+          } catch (err) {
+            // console.log(error.message, "Message!!!!!!!!!!!!");
+            // const err = error as AxiosError
+            if (err.response) {
+              console.log(err.response, "status!!!!!!!!!!!!!");
+              console.log(err.response.data, "data!!!!!!!!!!!!!!!!!!");
+            }
           }
         }}
       >

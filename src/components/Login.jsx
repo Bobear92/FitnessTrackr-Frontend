@@ -6,6 +6,7 @@ import { storeToken, storeUser } from "../auth";
 const Login = ({ setLoggedIn }) => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [error, setError] = useState("");
   return (
     <div className="Login-main">
       <form
@@ -22,13 +23,10 @@ const Login = ({ setLoggedIn }) => {
 
             setUsername("");
             setPassword("");
-          } catch (err) {
-            // console.log(error.message, "Message!!!!!!!!!!!!");
-            // const err = error as AxiosError
-            if (err.response) {
-              console.log(err.response, "status!!!!!!!!!!!!!");
-              console.log(err.response.data, "data!!!!!!!!!!!!!!!!!!");
-            }
+            setError("");
+          } catch (error) {
+            console.log(error.response);
+            setError(error);
           }
         }}
       >
@@ -47,6 +45,7 @@ const Login = ({ setLoggedIn }) => {
 
         <fieldset className="auth-component-input">
           <label htmlFor="password">Password</label>
+
           <input
             id="password"
             type="password"
@@ -59,6 +58,7 @@ const Login = ({ setLoggedIn }) => {
         </fieldset>
 
         <button className="auth-button">Login</button>
+        {error && <p>{error.response.data.message}</p>}
       </form>
     </div>
   );

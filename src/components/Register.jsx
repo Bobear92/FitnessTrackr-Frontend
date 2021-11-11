@@ -6,6 +6,7 @@ import { storeToken, storeUser } from "../auth";
 const Register = ({ setLoggedIn }) => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [error, setError] = useState("");
 
   return (
     <div className="Register-main">
@@ -23,8 +24,10 @@ const Register = ({ setLoggedIn }) => {
 
             setUsername("");
             setPassword("");
+            setError("");
           } catch (error) {
-            console.log(error);
+            console.log(error.response);
+            setError(error);
           }
         }}
       >
@@ -55,6 +58,7 @@ const Register = ({ setLoggedIn }) => {
         </fieldset>
 
         <button className="auth-button">Register</button>
+        {error ? <p>{error.response.data.message}</p> : null}
       </form>
     </div>
   );

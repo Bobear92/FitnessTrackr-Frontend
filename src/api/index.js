@@ -21,7 +21,7 @@ export async function registerUser(username, password) {
     });
     return data;
   } catch (error) {
-    console.error;
+    throw error;
   }
 }
 
@@ -31,6 +31,24 @@ export async function loginUser(username, password) {
       username,
       password,
     });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getAllRoutines() {
+  try {
+    const { data } = await axios.get(`${BASE}/routines`);
+    return data;
+  } catch (error) {
+    console.error;
+  }
+}
+
+export async function activities() {
+  try {
+    const { data } = await axios.get(`${BASE}/activities`);
     return data;
   } catch (error) {
     console.error;

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import { getAllRoutines } from "../api";
+
 
 const Routines = ({ allRoutines }) => {
-  console.log(allRoutines, "!!!!!!!!!!!!!");
   return (
+  
     <div>
       <h1>Routines</h1>
 
@@ -43,7 +42,9 @@ const Routines = ({ allRoutines }) => {
               );
             })
           : null}
+          </div>
       </div>
+);
 };
 
 export default Routines;

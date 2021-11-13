@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import { getToken } from "./auth";
-import { getAllRoutines } from "./api";
+import { getAllRoutines, getAllActivities } from "./api";
 
 import {
   BrowserRouter as Router,
@@ -24,6 +24,7 @@ import {
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [allRoutines, setAllRoutines] = useState([]);
+  const [allActivities, setAllActivities] = useState([])
   console.log(loggedIn, "main index 25");
 
   function isUserLoggedIn() {
@@ -33,12 +34,17 @@ const App = () => {
       setLoggedIn(true);
     }
   }
+  const handleActivities = async () => {
+    const data = await getAllActivities();
+    setAllActivities(data);
+  };
   const handleRoutines = async () => {
     const data = await getAllRoutines();
     setAllRoutines(data);
   };
   useEffect(() => {
     handleRoutines();
+    handleActivities();
     isUserLoggedIn();
   }, []);
 
@@ -59,7 +65,7 @@ const App = () => {
             <UserInfo />
           </Route>
           <Route path="/activities">
-            <Activities />
+            <Activities allActivities = {allActivities} />
           </Route>
           <Route path="/routines">
             <Routines allRoutines={allRoutines} />

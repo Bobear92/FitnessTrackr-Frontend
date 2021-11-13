@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import { activities } from "../api";
 
-const activity = ({ allActivities }) => {
+const Activities = ({ allActivities }) => {
   return (
     <div>
       <h1>Activities</h1>
@@ -11,16 +9,8 @@ const activity = ({ allActivities }) => {
         ? allActivities.map((e) => {
             return (
               <div className="activity-container" key={`activities${e.id}`}>
-                {e.activities.length
-                  ? e.activities.map((a) => {
-                      return (
-                        <p
-                          key={`activity-id${a.id}`}
-                        >{`Workouts ${a.name}`}</p>
-                      );
-                    })
-                  : null}
                 <p>{e.name}</p>
+                <p>{e.description}</p>
               </div>
             );
           })
@@ -29,6 +19,6 @@ const activity = ({ allActivities }) => {
   );
 };
 
-export default activities;
+export default Activities;
 
 // If not logged in show all public activities

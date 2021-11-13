@@ -46,7 +46,7 @@ export async function getAllRoutines() {
   }
 }
 
-export async function activities() {
+export async function getAllActivities() {
   try {
     const { data } = await axios.get(`${BASE}/activities`);
     return data;

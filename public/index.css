@@ -22,3 +22,6 @@
   display: flex;
   flex-direction: column;
 }
+.activity-container{
+  border: 1px solid black;
+}

@@ -7,6 +7,7 @@ const Routines = ({ allRoutines }) => {
   return (
     <div>
       <h1>Routines</h1>
+
       <div className="routine-main-container">
         {allRoutines.length
           ? allRoutines.map((e) => {
@@ -43,8 +44,6 @@ const Routines = ({ allRoutines }) => {
             })
           : null}
       </div>
-    </div>
-  );
 };
 
 export default Routines;

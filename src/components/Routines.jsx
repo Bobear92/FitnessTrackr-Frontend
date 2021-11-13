@@ -7,23 +7,42 @@ const Routines = ({ allRoutines }) => {
   return (
     <div>
       <h1>Routines</h1>
-
-      {allRoutines.length
-        ? allRoutines.map((e) => {
-            return (
-              <div className="routine-container" key={`routines${e.id}`}>
-                {e.activities.length
-                  ? e.activities.map((a) => {
-                      return (
-                        <p key={`activity-id${a.id}`}>{`Workout ${a.name}`}</p>
-                      );
-                    })
-                  : null}
-                <p>{e.name}</p>
-              </div>
-            );
-          })
-        : null}
+      <div className="routine-main-container">
+        {allRoutines.length
+          ? allRoutines.map((e) => {
+              return (
+                <div key={`routines${e.id}`}>
+                  <div className="routine-container">
+                    <p>{e.name}</p>
+                    <p>By {e.creatorName}</p>
+                    <p>Routine Goal</p>
+                    <p>{e.goal}</p>
+                  </div>
+                  {e.activities.length
+                    ? e.activities.map((a) => {
+                        return (
+                          <div
+                            className="routine_activity-container"
+                            key={`activity-id${a.id}`}
+                          >
+                            <p>Routine Activity</p>
+                            <p>{a.name}</p>
+                            <p>Routine Description</p>
+                            <p>{a.description}</p>
+                            <p>Routine Info</p>
+                            <p>
+                              Count: {a.count} and Duration:
+                              {a.duration}
+                            </p>
+                          </div>
+                        );
+                      })
+                    : null}
+                </div>
+              );
+            })
+          : null}
+      </div>
     </div>
   );
 };

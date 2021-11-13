@@ -24,8 +24,7 @@ import {
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [allRoutines, setAllRoutines] = useState([]);
-  const [allActivities, setAllActivities] = useState([])
-  console.log(loggedIn, "main index 25");
+  const [allActivities, setAllActivities] = useState([]);
 
   function isUserLoggedIn() {
     const token = getToken();
@@ -48,8 +47,6 @@ const App = () => {
     isUserLoggedIn();
   }, []);
 
-  console.log(loggedIn, "main index 39");
-
   return (
     <Router>
       <div id="App">
@@ -62,10 +59,15 @@ const App = () => {
             <Register setLoggedIn={setLoggedIn} />
           </Route>
           <Route path="/my-info">
-            <UserInfo />
+            <UserInfo
+              allActivities={allActivities}
+              setAllActivities={setAllActivities}
+              allRoutines={allRoutines}
+              setAllRoutines={setAllRoutines}
+            />
           </Route>
           <Route path="/activities">
-            <Activities allActivities = {allActivities} />
+            <Activities allActivities={allActivities} />
           </Route>
           <Route path="/routines">
             <Routines allRoutines={allRoutines} />

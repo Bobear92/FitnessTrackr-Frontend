@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 
-
 const Routines = ({ allRoutines }) => {
+  console.log(allRoutines, "!!!!!!!!!!!!!!!!!!!");
   return (
-  
     <div>
       <h1>Routines</h1>
 
       <div className="routine-main-container">
-        {allRoutines.length
+        {allRoutines && allRoutines.length
           ? allRoutines.map((e) => {
               return (
                 <div key={`routines${e.id}`}>
@@ -18,7 +17,7 @@ const Routines = ({ allRoutines }) => {
                     <p>Routine Goal</p>
                     <p>{e.goal}</p>
                   </div>
-                  {e.activities.length
+                  {e.activities && e.activities.length
                     ? e.activities.map((a) => {
                         return (
                           <div
@@ -42,9 +41,9 @@ const Routines = ({ allRoutines }) => {
               );
             })
           : null}
-          </div>
       </div>
-);
+    </div>
+  );
 };
 
 export default Routines;

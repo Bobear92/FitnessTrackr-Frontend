@@ -15,7 +15,7 @@ const Routines = ({ allRoutines }) => {
                 {e.activities.length
                   ? e.activities.map((a) => {
                       return (
-                        <p key={`activity-id${a.id}`}>{`Workout ${a.name}`}</p>
+                        <p key={`routine-id${a.id}`}>{`Workout ${a.name}`}</p>
                       );
                     })
                   : null}

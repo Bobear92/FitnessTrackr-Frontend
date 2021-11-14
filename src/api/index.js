@@ -43,7 +43,7 @@ export async function getAllRoutines() {
     const { data } = await axios.get(`${BASE}/routines`);
     return data;
   } catch (error) {
-    console.error;
+    throw error;
   }
 }
 
@@ -52,12 +52,11 @@ export async function getAllActivities() {
     const { data } = await axios.get(`${BASE}/activities`);
     return data;
   } catch (error) {
-    console.error;
+    throw error;
   }
 }
 
 export async function createRoutine(name, goal, isPublic) {
-  console.log(name, goal, isPublic);
   const token = getToken();
   try {
     const { data } = await axios.post(
@@ -96,49 +95,67 @@ export async function createActivity(name, description) {
 export async function getUsersRoutine() {
   const user = getUser();
   try {
-    const { data } = await axios.get(`${BASE}/routines`);
-    data.map((e) => {
-      if (e === user) {
-        return data;
-      }
-    });
+    const { data } = await axios.get(`${BASE}/users/${user}/routines`);
+
+    return data;
   } catch (error) {
-    console.error;
+    throw error;
   }
 }
 
-// export async function deleteActivity(name, description){
-//   const myToken = getToken()
-//   try{
-//     const {data} = await axios.delete(`${BASE}/activities/${name, description}`, {
-//       method: "DELETE",
-//       headers: {
-//         "Content-Type": 'application/json',
-//           'Authorization': `Bearer ${myToken}`
-//       },
-//     }
-//     )
-//     return data;
-// } catch(error){
-//   throw error
-// } finally{
-//   location.reload()
-// }}
+export async function deleteRoutine(id) {
+  const token = getToken();
+  try {
+    const { data } = await axios.delete(`${BASE}/routines/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
 
-// export async function deleteRoutines(name, goal, isPublic){
-//   const myToken = getToken()
-//   try{
-//     const {data} = await axios.delete(`${BASE}/routines/${name, goal, isPublic}`, {
-//       method: "DELETE",
-//       headers: {
-//         "Content-Type": 'application/json',
-//           'Authorization': `Bearer ${myToken}`
-//       },
-//     }
-//     )
-//     return data;
-// } catch(error){
-//   throw error
-// } finally{
-//   location.reload()
-// }}
+export async function updateRoutine(id, name, goal, isPublic) {
+  const token = getToken();
+  try {
+    const { data } = await axios.patch(
+      `${BASE}/routines/${id}`,
+      {
+        name,
+        goal,
+        isPublic,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+      }
+    );
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function addActivityToRoutine(
+  routineId,
+  activityId,
+  count,
+  duration
+) {
+  try {
+    const { data } = await axios.post(
+      `${BASE}/routines/${routineId}/activities`,
+      activityId,
+      count,
+      duration
+    );
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}

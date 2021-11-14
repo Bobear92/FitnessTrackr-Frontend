@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 const Routines = ({ allRoutines }) => {
-  console.log(allRoutines, "!!!!!!!!!!!!!!!!!!!");
   return (
     <div>
       <h1>Routines</h1>

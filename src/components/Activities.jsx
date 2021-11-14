@@ -33,5 +33,3 @@ const Activities = ({ allActivities }) => {
 };
 
 export default Activities;
-
-// If not logged in show all public activities

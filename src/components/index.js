@@ -7,3 +7,6 @@ export { default as Register } from "./Register";
 export { default as UserInfo } from "./UserInfo";
 export { default as NewActivity } from "./CreateActivity";
 export { default as NewRoutine } from "./CreateRoutine";
+export { default as UserRoutine } from "./UserRoutine";
+export { default as UpdateForm } from "./UpdateForm";
+export { default as Buttons } from "./Buttons";

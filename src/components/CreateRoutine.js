@@ -15,14 +15,14 @@ const NewRoutine = ({ allRoutines, setAllRoutines }) => {
           event.preventDefault();
           try {
             const createdRoutine = await createRoutine(name, goal, isPublic);
-            console.log("after18", createdRoutine);
-            const newArray = [createdRoutine, ...allRoutines];
-            console.log(newArray);
+            // const newArray = [createdRoutine, ...allRoutines];
+            // // console.log(newArray);
 
             setAllRoutines([createdRoutine, ...allRoutines]);
             setName("");
             setGoal("");
             setIsPublic(false);
+            setError("");
           } catch (error) {
             console.log(error.response);
             setError(error);

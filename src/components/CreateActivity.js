@@ -17,6 +17,7 @@ const NewActivity = ({ allActivities, setAllActivities }) => {
             setAllActivities([createdActivity, ...allActivities]);
             setName("");
             setDescription("");
+            setError("");
           } catch (error) {
             console.log(error.response);
             setError(error);

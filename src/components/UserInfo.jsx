@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { NewActivity, NewRoutine } from ".";
+import { NewActivity, NewRoutine, UserRoutine } from ".";
 
 const UserInfo = ({
   allActivities,
   setAllActivities,
   allRoutines,
   setAllRoutines,
+  allUserRoutines,
 }) => {
   return (
     <div>
@@ -17,6 +18,11 @@ const UserInfo = ({
         setAllActivities={setAllActivities}
       />
       <NewRoutine allRoutines={allRoutines} setAllRoutines={setAllRoutines} />
+
+      <UserRoutine
+        allUserRoutines={allUserRoutines}
+        allActivities={allActivities}
+      />
     </div>
   );
 };

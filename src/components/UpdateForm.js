@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { updateRoutine } from "../api";
 
-const UpdateForm = (id) => {
+const UpdateForm = ({id}) => {
   const [newName, setNewName] = useState("");
   const [newGoal, setNewGoal] = useState("");
   const [newIsPublic, setNewIsPublic] = useState(false);
@@ -13,7 +13,9 @@ const UpdateForm = (id) => {
         id="update"
         onSubmit={async (event) => {
           event.preventDefault();
+
           try {
+            console.log(id, newName, newGoal, newIsPublic, '!!!!!!!')
             await updateRoutine(id, newName, newGoal, newIsPublic);
 
             setNewName("");

@@ -27,13 +27,15 @@ const Buttons = ({ id, setUpdate, update, allActivities }) => {
       <form
         onSubmit={async (event) => {
           event.preventDefault();
+          console.log('submit button')
         }}
       >
         <label>
           Add an activity to a routine:
           <select>
             {allActivities.map((activity) => {
-              <option value={activity.name}>{activity.name}</option>;
+              // console.log(activity, 'activity')
+              return <option key={`allActivities id in button: ${activity.id}`} value={activity.name}>{activity.name}</option>;
             })}
           </select>
         </label>

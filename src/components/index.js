@@ -10,3 +10,6 @@ export { default as NewRoutine } from "./CreateRoutine";
 export { default as UserRoutine } from "./UserRoutine";
 export { default as UpdateForm } from "./UpdateForm";
 export { default as Buttons } from "./Buttons";
+export { default as AddActivityForm } from "./AddActivityForm";
+export { default as ActivityButtons } from "./ActivityButtons";
+export { default as UpdateActivityForm } from "./UpdateActivityForm";

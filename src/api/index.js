@@ -150,9 +150,46 @@ export async function addActivityToRoutine(
   try {
     const { data } = await axios.post(
       `${BASE}/routines/${routineId}/activities`,
-      activityId,
-      count,
-      duration
+      { activityId, count, duration }
+    );
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function deleteActivity(id) {
+  const token = getToken();
+
+  try {
+    const { data } = await axios.delete(`${BASE}/routine_activities/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function updateActivity(id, count, duration) {
+  const token = getToken();
+  console.log(token, "token!!!!!");
+  try {
+    const { data } = await axios.patch(
+      `${BASE}/routine_activities/${id}`,
+      {
+        count,
+        duration,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+      }
     );
     return data;
   } catch (error) {

@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { deleteRoutine } from "../api";
 import { getUser } from "../auth";
-import { Buttons } from ".";
+import { Buttons, ActivityButtons } from ".";
 
 const UserRoutine = ({ allUserRoutines, allActivities }) => {
   const user = getUser();
-
-  const [update, setUpdate] = useState(false);
 
   return (
     <>
@@ -25,6 +23,9 @@ const UserRoutine = ({ allUserRoutines, allActivities }) => {
                     <p>Routine Goal</p>
                     <p>{e.goal}</p>
                   </div>
+                  <div className="user-routine-buttons">
+                    <Buttons id={e.id} allActivities={allActivities} />
+                  </div>
                   {e.activities && e.activities.length
                     ? e.activities.map((a) => {
                         return (
@@ -41,18 +42,13 @@ const UserRoutine = ({ allUserRoutines, allActivities }) => {
                               Count: {a.count} and Duration:
                               {a.duration}
                             </p>
+                            <div>
+                              <ActivityButtons id={a.id} />
+                            </div>
                           </div>
                         );
                       })
                     : null}
-                  <div className="user-routine-buttons">
-                    <Buttons
-                      id={e.id}
-                      setUpdate={setUpdate}
-                      update={update}
-                      allActivities={allActivities}
-                    />
-                  </div>
                 </div>
               );
             })

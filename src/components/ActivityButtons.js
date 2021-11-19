@@ -5,6 +5,7 @@ import { UpdateActivityForm } from ".";
 
 const ActivityButtons = ({ id }) => {
   const [updateActivity, setUpdateActivity] = useState(false);
+  console.log(id, "id in activity button ")
 
   return (
     <>

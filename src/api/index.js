@@ -159,7 +159,9 @@ export async function addActivityToRoutine(
 }
 
 export async function deleteActivity(id) {
+  console.log('asdfasdf', id)
   const token = getToken();
+  console.log(token, 'token')
 
   try {
     const { data } = await axios.delete(`${BASE}/routine_activities/${id}`, {

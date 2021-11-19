@@ -28,6 +28,7 @@ const UserRoutine = ({ allUserRoutines, allActivities }) => {
                   </div>
                   {e.activities && e.activities.length
                     ? e.activities.map((a) => {
+                      console.log(a)
                         return (
                           <div
                             className="user-routine_activity-container"
@@ -43,7 +44,7 @@ const UserRoutine = ({ allUserRoutines, allActivities }) => {
                               {a.duration}
                             </p>
                             <div>
-                              <ActivityButtons id={a.id} />
+                              <ActivityButtons id={a.routineActivityId} />
                             </div>
                           </div>
                         );

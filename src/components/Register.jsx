@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
 import { registerUser } from "../api";
 import { storeToken, storeUser } from "../auth";
 

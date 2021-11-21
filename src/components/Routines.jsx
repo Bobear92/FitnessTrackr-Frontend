@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 const Routines = ({ allRoutines }) => {
   return (
@@ -46,5 +46,3 @@ const Routines = ({ allRoutines }) => {
 };
 
 export default Routines;
-
-// If not logged in show all public routines

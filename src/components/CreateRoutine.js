@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { createRoutine } from "../api";
 
 const NewRoutine = ({ allRoutines, setAllRoutines }) => {
@@ -15,8 +15,6 @@ const NewRoutine = ({ allRoutines, setAllRoutines }) => {
           event.preventDefault();
           try {
             const createdRoutine = await createRoutine(name, goal, isPublic);
-            // const newArray = [createdRoutine, ...allRoutines];
-            // // console.log(newArray);
 
             setAllRoutines([createdRoutine, ...allRoutines]);
             setName("");

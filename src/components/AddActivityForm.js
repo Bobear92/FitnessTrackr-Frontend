@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { addActivityToRoutine } from "../api";
 
 const AddActivityForm = ({ id, activityId }) => {

@@ -11,7 +11,7 @@
 //     \_____/ /
 //       \____/
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 const Activities = ({ allActivities }) => {
   return (

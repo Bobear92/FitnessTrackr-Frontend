@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { deleteRoutine } from "../api";
+import React from "react";
 import { getUser } from "../auth";
 import { Buttons, ActivityButtons } from ".";
 
